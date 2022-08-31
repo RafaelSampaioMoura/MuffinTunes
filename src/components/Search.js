@@ -84,22 +84,29 @@ class Search extends Component {
         {albums.length > 0 ? (
           <>
             <h2>
-              Resultado de álbuns de:{' '}
+              Resultado de álbuns de:
               {foundName}
             </h2>
             <>
-              {albums.map((album) => (
-                <div key={ album.collectionId }>
-                  <img src={ album.artworkUrl100 } alt={ album.collectionName } />
-                  <Link
-                    to={ `album/${album.collectionId}` }
-                    data-testid={ `link-to-album-${album.collectionId}` }
-                  >
-                    <h3>{album.collectionName}</h3>
-                  </Link>
-                  <p>{album.artistName}</p>
-                </div>
-              ))}
+              {albums.map(
+                ({
+                  collectionId,
+                  artworkUrl100,
+                  collectionName,
+                  artistName,
+                }) => (
+                  <div key={ collectionId }>
+                    <img src={ artworkUrl100 } alt={ collectionName } />
+                    <Link
+                      to={ `album/${collectionId}` }
+                      data-testid={ `link-to-album-${collectionId}` }
+                    >
+                      <h3>{collectionName}</h3>
+                    </Link>
+                    <p>{artistName}</p>
+                  </div>
+                ),
+              )}
             </>
           </>
         ) : (
