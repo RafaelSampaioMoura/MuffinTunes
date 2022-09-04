@@ -42,12 +42,12 @@ class Login extends Component {
     const { validName, userName, loading } = this.state;
 
     return (
-      <div data-testid="page-login">
+      <div data-testid="page-login" className="user-login">
         <form>
           {loading ? (
             <Loading />
           ) : (
-            <label htmlFor="username">
+            <label htmlFor="username" className="login-name">
               Nome de Usuário:
               {' '}
               <input
@@ -56,6 +56,7 @@ class Login extends Component {
                 name="username"
                 data-testid="login-name-input"
                 onChange={ this.handleValidation }
+                className="login-input"
               />
             </label>
           )}
@@ -65,6 +66,7 @@ class Login extends Component {
             data-testid="login-submit-button"
             disabled={ !validName }
             onClick={ () => this.handleClick(userName) }
+            className="login-button"
           >
             Entrar
           </button>

@@ -51,12 +51,11 @@ class Album extends Component {
             <ul>
               {musics.map(
                 (music, index) => index > 0 && (
-                  <div key={ music.trackId }>
+                  <li key={ music.trackId }>
                     <MusicCard
-                      trackName={ music.trackName }
-                      previewUrl={ music.previewUrl }
+                      music={ music }
                     />
-                  </div>
+                  </li>
                 ),
               )}
             </ul>

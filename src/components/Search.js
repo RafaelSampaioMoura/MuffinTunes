@@ -51,7 +51,7 @@ class Search extends Component {
   render() {
     const { validName, searchedName, loading, foundName, albums } = this.state;
     return (
-      <div data-testid="page-search">
+      <div data-testid="page-search" className="search-component">
         <form>
           {loading ? (
             <Loading />
@@ -64,6 +64,7 @@ class Search extends Component {
                 data-testid="search-artist-input"
                 value={ searchedName }
                 onChange={ this.handleValidation }
+                className="music-search"
               />
             </label>
           )}
@@ -72,6 +73,7 @@ class Search extends Component {
               type="button"
               data-testid="search-artist-button"
               onClick={ () => this.handleClick(searchedName) }
+              className="search-button"
             >
               Pesquisar
             </button>
@@ -87,7 +89,7 @@ class Search extends Component {
               Resultado de álbuns de:
               {foundName}
             </h2>
-            <>
+            <div className="search-results">
               {albums.map(
                 ({
                   collectionId,
@@ -95,19 +97,24 @@ class Search extends Component {
                   collectionName,
                   artistName,
                 }) => (
-                  <div key={ collectionId }>
-                    <img src={ artworkUrl100 } alt={ collectionName } />
+                  <div key={ collectionId } className="album-card">
+                    <img
+                      src={ artworkUrl100 }
+                      alt={ collectionName }
+                      className="album-image"
+                    />
                     <Link
                       to={ `album/${collectionId}` }
                       data-testid={ `link-to-album-${collectionId}` }
+                      style={ { textDecoration: 'none' } }
                     >
-                      <h3>{collectionName}</h3>
+                      <h3 style={ { textAlign: 'center' } }>{collectionName}</h3>
                     </Link>
-                    <p>{artistName}</p>
+                    <p style={ { textAlign: 'center' } }>{artistName}</p>
                   </div>
                 ),
               )}
-            </>
+            </div>
           </>
         ) : (
           <h3>Nenhum álbum foi encontrado</h3>

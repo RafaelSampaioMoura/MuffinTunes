@@ -16,6 +16,7 @@ class Header extends Component {
     this.handleHeader();
   }
 
+  // Adiciona o nome do usuário no header
   handleHeader = async () => {
     const user = await getUser();
     if (user === '{}') {
@@ -33,25 +34,45 @@ class Header extends Component {
 
   render() {
     const { loading, userName } = this.state;
-    const loadingElement = <p>Carregando...</p>;
-    const welcomeUser = (
-      <p data-testid="header-user-name">
-        Welcome
-        {userName}
-      </p>
-    );
+    const linkStyle = {
+      textDecoration: 'none',
+      color: 'black',
+      fontWeight: 'bold',
+    };
+
     return (
-      <header data-testid="header-component">
-        {loading ? loadingElement : welcomeUser}
-        <Link to="/search">
-          <p data-testid="link-to-search">To Search</p>
-        </Link>
-        <Link to="/favorites">
-          <p data-testid="link-to-favorites">To Favorites</p>
-        </Link>
-        <Link to="/profile">
-          <p data-testid="link-to-profile">To Profile</p>
-        </Link>
+      <header data-testid="header-component" className="header">
+        {/* Verifica se o usuário adicionou o login antes de renderizar o header */}
+        {loading ? (
+          <p>Carregando...</p>
+        ) : (
+          <p data-testid="header-user-name">
+            Welcome
+            {' '}
+            {userName}
+          </p>
+        )}
+        <div className="logo">TRYBE TUNES</div>
+        <div className="link-list">
+          <Link
+            to="/search"
+            style={ linkStyle }
+          >
+            <p data-testid="link-to-search" className="links">To Search</p>
+          </Link>
+          <Link
+            to="/favorites"
+            style={ linkStyle }
+          >
+            <p data-testid="link-to-favorites">To Favorites</p>
+          </Link>
+          <Link
+            to="/profile"
+            style={ linkStyle }
+          >
+            <p data-testid="link-to-profile">To Profile</p>
+          </Link>
+        </div>
       </header>
     );
   }

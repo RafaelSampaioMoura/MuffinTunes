@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Album from './components/Album';
@@ -17,11 +18,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={ Login } />
           <Route exact path="/search" component={ Search } />
-          <Route
-            exact
-            path="/album/:id"
-            render={ (props) => <Album { ...props } /> }
-          />
+          <Route path="/album/:id" render={ (props) => <Album { ...props } /> } />
           <Route exact path="/favorites" component={ Favorites } />
           <Route exact path="/profile" component={ Profile } />
           <Route path="/profile/edit" component={ ProfileEdit } />
