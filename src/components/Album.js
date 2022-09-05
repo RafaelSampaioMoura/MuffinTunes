@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
 import Loading from './Loading';
 import MusicCard from './MusicCard';
+import Header from './Header';
 
 class Album extends Component {
   constructor(props) {
@@ -41,27 +42,30 @@ class Album extends Component {
   render() {
     const { musics, loading } = this.state;
     return (
-      <div data-testid="page-album">
-        {loading ? (
-          <Loading />
-        ) : (
-          <>
-            <h2 data-testid="artist-name">{musics[0].artistName}</h2>
-            <h3 data-testid="album-name">{musics[0].collectionName}</h3>
-            <ul>
-              {musics.map(
-                (music, index) => index > 0 && (
-                  <li key={ music.trackId }>
-                    <MusicCard
-                      music={ music }
-                    />
-                  </li>
-                ),
-              )}
-            </ul>
-          </>
-        )}
-      </div>
+      <>
+        <Header />
+        <div data-testid="page-album">
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              <h2 data-testid="artist-name">{musics[0].artistName}</h2>
+              <h3 data-testid="album-name">{musics[0].collectionName}</h3>
+              <ul>
+                {musics.map(
+                  (music, index) => index > 0 && (
+                    <li key={ music.trackId }>
+                      <MusicCard
+                        music={ music }
+                      />
+                    </li>
+                  ),
+                )}
+              </ul>
+            </>
+          )}
+        </div>
+      </>
     );
   }
 }

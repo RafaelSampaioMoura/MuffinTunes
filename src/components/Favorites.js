@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 import NotFound from './NotFound';
+// import Header from './Header';
 
 class Favorites extends Component {
   constructor(props) {
@@ -56,48 +57,51 @@ class Favorites extends Component {
     const { loading, favSongs, checked } = this.state;
 
     return (
-      <div data-testid="page-favorites">
-        {favSongs.length === 0 ? (
-          <NotFound />
-        ) : (
-          <table>
-            <tbody>
-              {loading ? (
-                <Loading />
-              ) : (
-                favSongs.map((song, index) => (
-                  <tr key={ song.trackId }>
-                    <th>{index}</th>
-                    <th>{song.trackName}</th>
-                    <th>
-                      <audio
-                        data-testid="audio-component"
-                        src={ song.previewUrl }
-                        controls
-                      >
-                        <track kind="captions" />
-                        O seu navegador não suporta o
-                        elemento
-                        <code>audio</code>
-                        .
-                      </audio>
-                      <label htmlFor="favorite">
-                        Favorita
-                        <input
-                          type="checkbox"
-                          onChange={ () => this.handleChange(song) }
-                          checked={ checked }
-                          id="favorite"
-                        />
-                      </label>
-                    </th>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        )}
-      </div>
+      <>
+        {/* <Header /> */}
+        <div data-testid="page-favorites">
+          {favSongs.length === 0 ? (
+            <NotFound />
+          ) : (
+            <table>
+              <tbody>
+                {loading ? (
+                  <Loading />
+                ) : (
+                  favSongs.map((song, index) => (
+                    <tr key={ song.trackId }>
+                      <th>{index}</th>
+                      <th>{song.trackName}</th>
+                      <th>
+                        <audio
+                          data-testid="audio-component"
+                          src={ song.previewUrl }
+                          controls
+                        >
+                          <track kind="captions" />
+                          O seu navegador não suporta o
+                          elemento
+                          <code>audio</code>
+                          .
+                        </audio>
+                        <label htmlFor="favorite">
+                          Favorita
+                          <input
+                            type="checkbox"
+                            onChange={ () => this.handleChange(song) }
+                            checked={ checked }
+                            id="favorite"
+                          />
+                        </label>
+                      </th>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </>
     );
   }
 }

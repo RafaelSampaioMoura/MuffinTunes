@@ -6,6 +6,7 @@ import {
   removeSong,
 } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
+// import Header from './Header';
 
 class MusicCard extends Component {
   constructor(props) {
@@ -90,33 +91,36 @@ class MusicCard extends Component {
     const { trackName, previewUrl, trackId } = music;
 
     return (
-      <div>
-        {loading ? (
-          <Loading />
-        ) : (
-          <>
-            {trackName}
-            <audio data-testid="audio-component" src={ previewUrl } controls>
-              <track kind="captions" />
-              O seu navegador não suporta o elemento
-              {' '}
-              <code>audio</code>
-              .
-            </audio>
-            <label htmlFor="favorite">
-              Favoritar:
-              {' '}
-              <input
-                type="checkbox"
-                onChange={ () => this.handleChange(music) }
-                checked={ checked }
-                data-testid={ `checkbox-music-${trackId}` }
-                id="favorite"
-              />
-            </label>
-          </>
-        )}
-      </div>
+      <>
+        {/* <Header /> */}
+        <div>
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              {trackName}
+              <audio data-testid="audio-component" src={ previewUrl } controls>
+                <track kind="captions" />
+                O seu navegador não suporta o elemento
+                {' '}
+                <code>audio</code>
+                .
+              </audio>
+              <label htmlFor="favorite">
+                Favoritar:
+                {' '}
+                <input
+                  type="checkbox"
+                  onChange={ () => this.handleChange(music) }
+                  checked={ checked }
+                  data-testid={ `checkbox-music-${trackId}` }
+                  id="favorite"
+                />
+              </label>
+            </>
+          )}
+        </div>
+      </>
     );
   }
 }

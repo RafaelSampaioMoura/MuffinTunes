@@ -47,8 +47,6 @@ class Header extends Component {
           <p>Carregando...</p>
         ) : (
           <p data-testid="header-user-name">
-            Welcome
-            {' '}
             {userName}
           </p>
         )}

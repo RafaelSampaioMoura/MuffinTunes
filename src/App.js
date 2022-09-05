@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
+// import Header from './components/Header';
 import Album from './components/Album';
 import Favorites from './components/Favorites';
 import Login from './components/Login';
@@ -14,7 +14,7 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <Header />
+        {/* <Header /> */}
         <Switch>
           <Route exact path="/" component={ Login } />
           <Route exact path="/search" component={ Search } />
