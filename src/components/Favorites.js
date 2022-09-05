@@ -43,6 +43,7 @@ class Favorites extends Component {
       async () => {
         const favoriteList = await getFavoriteSongs();
         const uniqueFavs = [...new Set(favoriteList)];
+        console.log(uniqueFavs);
         this.setState({
           loading: false,
           favSongs: [...uniqueFavs],
@@ -55,7 +56,7 @@ class Favorites extends Component {
     const { loading, favSongs, checked } = this.state;
 
     return (
-      <div>
+      <div data-testid="page-favorites">
         {favSongs.length === 0 ? (
           <NotFound />
         ) : (

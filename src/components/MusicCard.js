@@ -31,7 +31,7 @@ class MusicCard extends Component {
       },
       async () => {
         const response = await getFavoriteSongs();
-        const isFav = response.find((res) => res === trackName);
+        const isFav = response.find((res) => res.trackName === trackName);
         if (isFav) {
           this.setState({
             loading: false,
@@ -69,9 +69,12 @@ class MusicCard extends Component {
           loading: true,
         },
         async () => {
-          await addSong(song);
-          await getFavoriteSongs();
-          console.log(await getFavoriteSongs());
+          // const favoriteSongs = await getFavoriteSongs();
+          // if(favoriteMusics.find((music) => music.trackId ===  ))
+          const addedSong = await addSong(song);
+          console.log(addedSong);
+
+          // console.log(await getFavoriteSongs());
           this.setState({
             loading: false,
             checked: true,
