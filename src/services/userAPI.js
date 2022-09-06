@@ -30,7 +30,7 @@ export const createUser = (user) => new Promise((resolve) => {
   const emptyUser = {
     name: '',
     email: '',
-    image: '/media/user/New Partition/Repos/trybeExercicios/Projetos/sd-t24-a-project-trybetunes/images/profile.png',
+    image: '',
     description: '',
   };
   saveUser({ ...emptyUser, ...user });

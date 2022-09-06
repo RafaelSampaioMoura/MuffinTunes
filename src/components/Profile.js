@@ -34,22 +34,21 @@ class Profile extends Component {
   };
 
   render() {
-    const { userName, userEmail, userDescription, userImg, loading } =
-      this.state;
+    const { userName, userEmail, userDescription, userImg, loading } = this.state;
     return (
       <>
         <Header />
-        <div data-testid='page-profile'>
+        <div data-testid="page-profile">
           {loading ? (
             <Loading />
           ) : (
             <div>
-              <img src={userImg} alt={userName} data-testid='profile-image' />
+              <img src={ userImg } alt={ userName } data-testid="profile-image" />
               <h1>{userName}</h1>
               <h2>{userEmail}</h2>
               <p>{userDescription}</p>
-              <Link to='/profile/edit'>
-                <button type='button'>Editar perfil</button>
+              <Link to="/profile/edit">
+                <button type="button">Editar perfil</button>
               </Link>
             </div>
           )}
